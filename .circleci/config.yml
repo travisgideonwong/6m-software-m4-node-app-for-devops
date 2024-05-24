@@ -38,7 +38,7 @@ jobs:
           command: docker build -t travisgideonwong/m4-devop-assignment4-5-1:latest .
       - run:
           name: Login to Docker Hub
-          command: echo tc6pfg598sv8p3ec8u | docker login -u me@travisgideonwong.com --password-stdin
+          command: echo mypassword | docker login -u myusername --password-stdin
       - run:
           name: Push Docker Image
           command: docker push travisgideonwong/m4-devop-assignment4-5-1:latest
