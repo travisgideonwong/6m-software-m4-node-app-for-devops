@@ -27,7 +27,7 @@ jobs:
           echo "Running tests..."
           npm run test
 
-  publish:
+  build-and-push:
     docker:
       - image: cimg/node:16.10
     steps:
@@ -35,13 +35,13 @@ jobs:
       - checkout
       - run:
           name: Build Docker Image
-          command: docker build -t travisgideonwong/m4-devop-assignment4-5:latest .
+          command: docker build -t education-space/m4-devop-assignment4-5-1:latest .
       - run:
           name: Login to Docker Hub
-          command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+          command: echo tc6pfg598sv8p3ec8u | docker login -u me@travisgideonwong.com --password-stdin
       - run:
           name: Push Docker Image
-          command: docker push travisgideonwong/m4-devop-assignment4-5:latest
+          command: docker push education-space/m4-devop-assignment4-5-1:latest
 
 workflows:
   version: 2
@@ -51,6 +51,6 @@ workflows:
       - test:
           requires:
             - build
-      - publish:
+      - build-and-push:
           requires:
             - test
